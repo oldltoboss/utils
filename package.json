@@ -1,0 +1,70 @@
+{
+  "name": "@krack/utils",
+  "version": "0.0.7",
+  "description": "Utilities to work with hydra services",
+  "author": {
+    "name": "Emir Herrera",
+    "email": "emir.herrera@gmail.com"
+  },
+  "license": "GNU GLP V3",
+  "private": true,
+  "main": "lib/utils.js",
+  "mocha": {
+    "recursive": true,
+    "extension": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "scripts": {
+    "clear": "rm -rf lib/*",
+    "prebuild": "yarn clear",
+    "build": "yarn run tsc",
+    "postbuild": "cp package.json lib/",
+    "lint": "tslint -c tslint.json  --project . -t codeFrame",
+    "test": "yarn mocha --exit",
+    "test:coverage": "nyc mocha --exit",
+    "doc": "typedoc"
+  },
+  "engines": {
+    "node": ">=8.11.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "oauth2-server": "^3.0.1",
+    "redis": "^2.8.0",
+    "util": "^0.12.1",
+    "yargs": "^15.0.2"
+  },
+  "devDependencies": {
+    "@types/oauth2-server": "^3.0.12",
+    "@types/redis": "^2.8.14",
+    "@types/yargs": "^13.0.3",
+    "@types/mocha": "^5.2.7",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.2.0",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^5.17.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.7.2"
+  }
+}
